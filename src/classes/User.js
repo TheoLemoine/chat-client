@@ -2,9 +2,9 @@
 
 export default class User {  
     
-    constructor(name, color) {
+    constructor(name, avatarLink = null) {
         this.name = name
-        this.color = color
+        this.avatarLink = avatarLink
     }
 
 }

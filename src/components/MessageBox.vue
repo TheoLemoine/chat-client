@@ -8,14 +8,17 @@
 </template>
 
 <script>
+import Message from '../classes/Message'
+
 export default {
     data() {
         return { toSend: '', }
     },
     methods: {
         handleSubmit() {
-            this.$emit('message-sent', this.toSend)
-            this.toSend = ''
+            if(this.toSend === '') return
+
+            this.$store.dispatch('sendMessage', new Message(this.$store.state.currentUser, this.toSend))
         }
     },
 }

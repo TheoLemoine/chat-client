@@ -1,23 +1,26 @@
 <template>
     <div>
         <h1>Users :</h1>
-        <user-list-user 
+        <users-list-user 
             v-for="(user, index) in users" 
             :key="index"
             :user="user"
-        ></user-list-user>
+        ></users-list-user>
     </div>
 </template>
 
 <script>
-import UserListUser from './UserListUser'
+import UsersListUser from './UsersListUser'
 
 export default {
     props: {
-        users: Array,
+        users: {
+           type: Array,
+           required: true,
+        }
     },
     components: {
-        UserListUser,
+        UsersListUser,
     },
 }
 </script>

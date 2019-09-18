@@ -9,7 +9,10 @@ import Message from '../classes/Message'
 
 export default {
     props: {
-        message: Message,
+        message: {
+            type: Message,
+            required: true,
+        }
     },
 }
 </script>
