@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="chat-container">
         <users-list :users="$store.state.connectedUsers"></users-list>
         <messages-list :messages="$store.state.messages"></messages-list>
         <message-box></message-box>
@@ -20,6 +20,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+    .chat-container {
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background-color: aquamarine;
 
+        display: flex;
+        flex-direction: column;
+    }
 </style>

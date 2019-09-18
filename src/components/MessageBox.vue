@@ -1,6 +1,5 @@
 <template>
     <div>
-        will send : {{ toSend }}
         <form @submit.prevent="handleSubmit">
             <input type="text" v-model="toSend"><button type="submit">Send</button>
         </form>
@@ -24,6 +23,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    div {
+        grid-area: box;
+        display: block;
+    }
 </style>

@@ -30,9 +30,12 @@ const store = new Vuex.Store({
         addUser(state, user) {
             state.connectedUsers.push(user)
         },
+        setUsers(state, users) {
+            state.connectedUsers = users
+        },
         removeUser(state, username) {
             state.connectedUsers.filter((u) => u.name !== username)
-        }
+        },
     },
     actions: {
         connectUser({commit}, user) {
@@ -69,19 +72,8 @@ socket.on('user typing', (typing) => {
     store.commit('setTyping', typing)
 })
 
-socket.on('users update', ({type, user: { username, avatar }}) => {
-    switch (type) {
-        case 'join':
-            store.commit('addUser', new User(username, avatar))
-            break;
-
-        case 'left':
-            store.commit('removeUser', username)
-            break;
-    
-        default:
-            break;
-    }
+socket.on('users update', ({type, user, users}) => {
+    store.commit('setUsers', users.map(u => new User(u.username, u.avatar)))
 })
 
 socket.on('message new', ({message: { user: { username }, text, created}}) => {

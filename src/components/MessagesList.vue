@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <h1>Messages :</h1>
+    <div class="message-list">
         <messages-list-message 
             v-for="(message, index) in messages" 
             :key="index"
@@ -25,6 +24,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    .message-list {
+        grid-area: chat;
+        display: block;
+        overflow-y: scroll;
+    }
 </style>

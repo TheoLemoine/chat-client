@@ -1,3 +1,3 @@
 export default {
-    SERVER_URL: 'http://localhost:3000',
+    SERVER_URL: 'https://bddi-2019-chat.herokuapp.com/',
 }

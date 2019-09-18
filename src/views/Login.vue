@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="login">
         <form @submit.prevent="handleUserConnect">
             Name
             <input type="text" v-model="userName">
@@ -31,5 +31,24 @@ export default {
 </script>
 
 <style>
+.login {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: orange;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 </style>
