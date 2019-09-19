@@ -5,7 +5,7 @@
             <user-spinner :user="$store.state.currentUser" :size="150" :spinnerWidth="12"></user-spinner>
 
             <div class="usernames-container">
-                <h2 class="username"> Théo</h2><div class="open-slider" @click="isOpen = !isOpen" :class="{open: isOpen}"></div>
+                <h2 class="username">{{$store.state.currentUser.name}}</h2><div class="open-slider" @click="isOpen = !isOpen" :class="{open: isOpen}"></div>
 
                 <div class="names">
                     <users-list-user
