@@ -27,7 +27,7 @@ export default {
         left:0;
         width: 100%;
         height: 100%;
-        background-color: aquamarine;
+        background-color: rgb(56, 55, 66);
 
         display: flex;
         flex-direction: column;
