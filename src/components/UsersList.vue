@@ -24,7 +24,7 @@
 
 
         <div class="usernames-container">
-            <h2 class="username"> Théo</h2><div class="open-slider" @click="isOpen = !isOpen" :class="{slide: isOpen}"></div>
+            <h2 class="username"> {{$store.state.currentUser.name}}</h2><div class="open-slider" @click="isOpen = !isOpen" :class="{slide: isOpen}"></div>
 
             <div class="names">
                 <users-list-user
@@ -75,7 +75,7 @@ export default {
         --list-width: -.5vw;
         position: absolute;
         top: 0;
-        width: 280px;
+        width: 300px;
         left: calc(0vw - var(--list-width));
 
         background-color: #091a2c;
@@ -177,7 +177,7 @@ export default {
         width: 80px;
         height: 80px;
         border-radius: 200px;
-        opacity: 0.1;
+        opacity: 0.6;
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -203,48 +203,7 @@ export default {
         height: 100%;
     }
 
-    .container-name{
-        margin: 15px 30px;
-        width: 120px;
-        height: 50px;
-        border-top: 1.5px solid white;
-        transform: rotate(-20deg);
-    }
 
-    .container-name p{
-        text-transform: uppercase;
-        font-size: 2rem;
-        color: white;
-        position: relative;
-        top: -25px;
-        letter-spacing: .395rem;
-        font-family: KorolevCompressedW04-Thin, sans-serif;
-        font-style: normal;
-        font-weight: 500;
-    }
-
-    .container-name::after{
-        content: '';
-        position: absolute;
-        background: white;
-        width: 1.5px;
-        height: 40px;
-        top: -13.8px;
-        right: -18.5px;
-        transform: rotate(-70deg);
-    }
-
-    .container-name::before{
-        content: '';
-        position: absolute;
-        background: white;
-        border-radius: 100%;
-        width: 10px;
-        height: 10px;
-        top: 8.1px;
-        right: -45px;
-        transform: rotate(-70deg);
-    }
 
     .usernames-container{
         display: flex;
