@@ -16,10 +16,14 @@ const store = new Vuex.Store({
         connectedUsers: [],
         currentUser: null,
         someoneTyping: false,
+        theme: 'Triste',
     },
     mutations: {
         addMessage(state, message) {
             state.messages.push(message)
+        },
+        setMessages(state, messages){
+            state.messages = messages
         },
         setCurrentUser(state, User) {
             state.currentUser = User;
@@ -47,6 +51,27 @@ const store = new Vuex.Store({
                 socket.on('user registered', () => {
                     commit('setCurrentUser', user)
                     resolve()
+
+                    socket.on('user typing', (typing) => {
+                        store.commit('setTyping', typing)
+                    })
+                    
+                    socket.on('users update', ({type, user, users}) => {
+                        store.commit('setUsers', users.map(u => new User(u.username, u.avatar)))
+                    })
+                    
+                    socket.on('message new', ({message: { user: { username }, text, created}}) => {
+                        const user = store.state.connectedUsers.find(u => u.name === username)
+                    
+                        store.commit('addMessage', new Message(user, text, created))
+                    })
+                    
+                    socket.on('message update', ({messages}) => {
+                        store.commit('setMessages', users.map(m => {
+                            const user = store.state.connectedUsers.find(u => m.user.name === u.name)
+                            store.commit('addMessage', new Message(user, m.text, m.created))
+                        }))
+                    })
                 })
                 socket.on('chat error', ({code, message}) => {
                     if(code <= 100 || code <= 102) reject(message)
@@ -66,20 +91,6 @@ const store = new Vuex.Store({
             io.emit('user typing')
         }
     }
-})
-
-socket.on('user typing', (typing) => {
-    store.commit('setTyping', typing)
-})
-
-socket.on('users update', ({type, user, users}) => {
-    store.commit('setUsers', users.map(u => new User(u.username, u.avatar)))
-})
-
-socket.on('message new', ({message: { user: { username }, text, created}}) => {
-    const user = store.state.connectedUsers.find(u => u.name === username)
-
-    store.commit('addMessage', new Message(user, text, created))
 })
 
 socket.on('command new', ({command, value}) => {

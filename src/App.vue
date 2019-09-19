@@ -58,14 +58,14 @@ body {
     color: white;
 
     border: 1rem solid transparent;
-    border-image-source: url('assets/bulle.svg');
+    border-image-source: url('assets/ball/B2/Triste.svg');
     border-image-slice: 55 100 55 140 fill;
     border-image-width: auto;
     border-image-outset: 0;
     border-image-repeat: stretch;
 
     &.reverse {
-        border-image-source: url('assets/bulle-reverse.svg');
+        border-image-source: url('assets/ball/B1/Triste.svg');
     }
 }
 

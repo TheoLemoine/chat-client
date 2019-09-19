@@ -12,8 +12,9 @@
         <div class="time">
             {{ message.createdAt.format('hh:mm') }}
         </div>
-        <div class="sci-fi-box content" :class="{ reverse: isOwned }">
-            {{ message.content }}
+        <div class="sci-fi-box content" 
+            :class="{ reverse: isOwned }">
+                {{ message.content }}
         </div>
     </div>
 </template>
