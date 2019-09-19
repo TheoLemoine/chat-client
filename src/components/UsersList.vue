@@ -92,38 +92,6 @@ export default {
         width: 100%;
     }
 
-    .container-name{
-        margin: 15px 30px;
-        width: 120px;
-        height: 50px;
-        border-top: 1.5px solid white;
-        transform: rotate(-20deg);
-    }
-
-    .container-name p{
-        text-transform: uppercase;
-        font-size: 2rem;
-        color: white;
-        position: relative;
-        top: -25px;
-        letter-spacing: .395rem;
-        font-family: 'korolev', sans-serif;
-        font-style: normal;
-        font-weight: 500;
-    }
-
-    .container-name::after{
-        content: '';
-        position: absolute;
-        background: white;
-        width: 1.5px;
-        height: 40px;
-        top: -13.8px;
-        right: -18.5px;
-        transform: rotate(-70deg);
-    }
-
-
     .usernames-container{
         display: flex;
         flex-direction: column;

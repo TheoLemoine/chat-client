@@ -1,5 +1,5 @@
 <template>
-    <div class="message" :class="{ owned: isOwned }">
+    <div class="message" :class="{ owned: isOwned }" ref="message">
         <user-spinner 
             :user="message.user" 
             :size="50" 
@@ -28,6 +28,9 @@ export default {
             type: Message,
             required: true,
         },
+    },
+    mounted() {
+        this.$refs.message.scrollIntoView(false)
     },
     computed: {
         isOwned() {

@@ -28,8 +28,6 @@ export default {
         transform: rotate(-20deg);
     }
 
-
-
     .container-name::after{
         content: '';
         position: absolute;
@@ -58,7 +56,8 @@ export default {
         font-size: 1.25rem;
         color: white;
         position: relative;
-        top: -110px;
+        top: -45px;
+        left: -30px;
         letter-spacing: .395rem;
         font-family: korolev, sans-serif;
         font-style: normal;
