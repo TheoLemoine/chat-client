@@ -1,13 +1,11 @@
 <template>
-    <div class="message-list">
-        <transition-group name="up-fade">
-            <messages-list-message 
-                v-for="(message, index) in messages" 
-                :key="index"
-                :message="message"
-            ></messages-list-message>
-        </transition-group>
-    </div>
+    <transition-group name="up-fade" class="message-list">
+        <messages-list-message
+            v-for="(message, index) in messages" 
+            :key="index"
+            :message="message"
+        ></messages-list-message>
+    </transition-group>
 </template>
 
 <script>
@@ -28,7 +26,10 @@ export default {
 
 <style lang="scss" scoped>
     .message-list {
-        display: block;
+        width: 80%;
+        height: 92%;
+        display: flex;
+        flex-direction: column;
         overflow-y: scroll;
     }
 

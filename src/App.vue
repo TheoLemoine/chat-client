@@ -14,19 +14,30 @@ export default {
 </script>
 
 <style lang="scss">
+
+@font-face {
+    font-family: "korolev";
+    src: url("assets/fonts/Korolev Compressed.eot"); /* IE9*/
+    src: url("assets/fonts/Korolev Compressed.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("assets/fonts/Korolev Compressed.woff2") format("woff2"), /* chrome、firefox */
+    url("assets/fonts/Korolev Compressed.woff") format("woff"), /* chrome、firefox */
+    url("assets/fonts/Korolev Compressed.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("assets/fonts/Korolev Compressed.svg#Korolev Compressed") format("svg"); /* iOS 4.1- */
+}
+
 body {
     margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 #app {
     width: 100%;
     height: 100%;
-
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'korolev';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
@@ -38,6 +49,25 @@ body {
 .slide-leave-to {
     transform: translateX(-100vw);
     opacity: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+  width: 7px;
+  height: 7px;
 }
 
 </style>

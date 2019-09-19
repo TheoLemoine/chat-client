@@ -1,5 +1,5 @@
 <template>
-    <div class="message">
+    <div class="message" :class="{ owned: isOwned }">
         {{ message.createdAt.format('h:mm:ss') }} : {{ message.user.name }} : {{ message.content }}
     </div>
 </template>
@@ -15,29 +15,38 @@ export default {
             required: true,
         },
     },
+    computed: {
+        isOwned() {
+            return this.$store.state.currentUser.name === this.message.user.name
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 
 .message {
-    margin: 6rem;
-    padding: 1rem;
+    margin: 3rem;
+    padding: 1rem 2rem;
 
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: rgb(189, 189, 189);
 
     width: fit-content;
-    max-width: 60%;
+    max-width: 40%;
     min-width: 20%;
     word-break: break-all;
 
-    border: solid transparent;
-    border-image-source: url('../assets/message-box.svg');
-    border-image-slice: 63 180 60 160 fill;
-    border-image-width: 110px 380px 120px 350px;
-    border-image-outset: 30px;
-    border-image-repeat: round;
+    border: 1rem solid transparent;
+    border-image-source: url('../assets/bulle.svg');
+    border-image-slice: 55 100 55 140 fill;
+    border-image-width: auto;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+
+    &.owned {
+        align-self: flex-end;
+    }
 }
 
 </style>
