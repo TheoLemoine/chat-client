@@ -1,6 +1,14 @@
 <template>
     <div class="message" :class="{ owned: isOwned }">
-        {{ message.createdAt.format('h:mm:ss') }} : {{ message.user.name }} : {{ message.content }}
+        <div class="username">
+            {{ message.user.name }}
+        </div>
+        <div class="time">
+            {{ message.createdAt.format('hh:mm') }}
+        </div>
+        <div class="sci-fi-box content" :class="{ reverse: isOwned }">
+            {{ message.content }}
+        </div>
     </div>
 </template>
 
@@ -24,29 +32,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .message {
-    margin: 3rem;
-    padding: 1rem 2rem;
 
-    font-size: 1.3rem;
-    color: rgb(189, 189, 189);
+    color: white;
+    position: relative;
 
-    width: fit-content;
-    max-width: 40%;
-    min-width: 20%;
-    word-break: break-all;
-
-    border: 1rem solid transparent;
-    border-image-source: url('../assets/bulle.svg');
-    border-image-slice: 55 100 55 140 fill;
-    border-image-width: auto;
-    border-image-outset: 0;
-    border-image-repeat: stretch;
+    .username {
+        position: absolute;
+        left: 4%;
+        top: 15%;
+    }
+    .time {
+        position: absolute;
+        bottom: 20%;
+        left: 8%;
+    }
+    .content {
+        width: fit-content;
+        word-break: break-all;
+        max-width: 40vw;
+        min-width: 10vw;
+    }
 
     &.owned {
-        align-self: flex-end;
+        .content {
+            float: right;
+        }
+        .username {
+            left: unset;
+            right: 4%;
+        }
+        .time {
+            left: unset;
+            right: 8%;
+        }
     }
 }
-
 </style>

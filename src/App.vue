@@ -43,6 +43,25 @@ body {
     color: #2c3e50;
 }
 
+.sci-fi-box {
+    margin: 3rem;
+    padding: 1rem 2rem;
+
+    font-size: 1.3rem;
+    color: white;
+
+    border: 1rem solid transparent;
+    border-image-source: url('assets/bulle.svg');
+    border-image-slice: 55 100 55 140 fill;
+    border-image-width: auto;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+
+    &.reverse {
+        border-image-source: url('assets/bulle-reverse.svg');
+    }
+}
+
 .slide-leave-active {
     transition: all 1s cubic-bezier(0.24, 1.06, 0.51, 0.98);
 }
