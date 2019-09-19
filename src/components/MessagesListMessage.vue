@@ -38,20 +38,32 @@ export default {
     position: relative;
 
     .username {
+        font-size: 1.25rem;
+        font-family: 'korolev';
+        text-transform: uppercase;
+        letter-spacing: 0.35em;
         position: absolute;
         left: 4%;
         top: 15%;
     }
     .time {
+        
+        font-size: 0.8rem;
+        font-family: 'avenir';
         position: absolute;
-        bottom: 20%;
+        letter-spacing: 0.2em;
+        bottom: 19%;
         left: 8%;
     }
     .content {
+        
+        font-size: 0.9rem;
         width: fit-content;
         word-break: break-all;
         max-width: 40vw;
         min-width: 10vw;
+    }
+    .time, .content {
     }
 
     &.owned {
