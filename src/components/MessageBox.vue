@@ -80,7 +80,7 @@ export default {
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                padding-right: 4.2rem;
+                padding-right: 5.4%;
 
                 cursor: pointer;
 

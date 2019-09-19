@@ -1,5 +1,11 @@
 <template>
     <div class="message" :class="{ owned: isOwned }">
+        <user-spinner 
+            :user="message.user" 
+            :size="50" 
+            :spinnerWidth="3" 
+            class="avatar"
+        ></user-spinner>
         <div class="username">
             {{ message.user.name }}
         </div>
@@ -14,7 +20,7 @@
 
 <script>
 import Message from '../classes/Message'
-import moment from 'moment'
+import UserSpinner from './UserSpinner'
 
 export default {
     props: {
@@ -27,11 +33,14 @@ export default {
         isOwned() {
             return this.$store.state.currentUser.name === this.message.user.name
         }
+    },
+    components: {
+        UserSpinner,
     }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .message {
 
     color: white;
@@ -43,7 +52,7 @@ export default {
         text-transform: uppercase;
         letter-spacing: 0.35em;
         position: absolute;
-        left: 4%;
+        left: 4.5%;
         top: 15%;
     }
     .time {
@@ -53,7 +62,7 @@ export default {
         position: absolute;
         letter-spacing: 0.2em;
         bottom: 19%;
-        left: 8%;
+        left: 8.5%;
     }
     .content {
         
@@ -63,7 +72,13 @@ export default {
         max-width: 40vw;
         min-width: 10vw;
     }
-    .time, .content {
+    .avatar {
+        position: absolute;
+        top: -12%;
+        
+        .circle-img-around {
+            display: none;
+        }
     }
 
     &.owned {
@@ -72,11 +87,14 @@ export default {
         }
         .username {
             left: unset;
-            right: 4%;
+            right: 5%;
         }
         .time {
             left: unset;
-            right: 8%;
+            right: 9%;
+        }
+        .avatar {
+            display: none;
         }
     }
 }

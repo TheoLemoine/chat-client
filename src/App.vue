@@ -50,7 +50,7 @@ body {
 }
 
 .sci-fi-box {
-    margin: 3rem;
+    margin: 3rem 3.5rem;
     padding: 1rem 2rem;
 
     font-family: 'avenir';
