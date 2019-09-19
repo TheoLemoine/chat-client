@@ -10,10 +10,10 @@
             {{ message.user.name }}
         </div>
         <div class="time">
-            {{ message.createdAt.format('hh:mm') }}
+            {{ message.createdAt.format('H:mm') }}
         </div>
         <div class="sci-fi-box content" 
-            :class="{ reverse: isOwned }">
+            :class="[isOwned ? 'reverse' : '', this.$store.state.theme]">
                 {{ message.content }}
         </div>
     </div>
@@ -36,7 +36,7 @@ export default {
     computed: {
         isOwned() {
             return this.$store.state.currentUser.name === this.message.user.name
-        }
+        },
     },
     components: {
         UserSpinner,

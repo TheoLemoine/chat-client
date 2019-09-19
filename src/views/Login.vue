@@ -20,6 +20,11 @@ export default {
             avatarLink: '',
         }
     },
+    created() {
+        const lastUser = JSON.parse(localStorage.getItem('user'))
+        this.userName = lastUser.name
+        this.avatarLink = lastUser.avatarLink
+    },
     methods: {
         handleUserConnect(event) {
             this.$store.dispatch('connectUser', new User(this.userName, this.avatarLink))

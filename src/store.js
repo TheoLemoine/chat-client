@@ -16,7 +16,7 @@ const store = new Vuex.Store({
         connectedUsers: [],
         currentUser: null,
         someoneTyping: false,
-        theme: 'Triste',
+        theme: 'happy', // love, angry, afraid, senerity, sad, happy
     },
     mutations: {
         addMessage(state, message) {
@@ -40,6 +40,9 @@ const store = new Vuex.Store({
         removeUser(state, username) {
             state.connectedUsers.filter((u) => u.name !== username)
         },
+        setTheme(state, theme) {
+            state.theme = theme
+        }
     },
     actions: {
         connectUser({commit}, user) {
@@ -51,6 +54,8 @@ const store = new Vuex.Store({
                 socket.on('user registered', () => {
                     commit('setCurrentUser', user)
                     resolve()
+
+                    localStorage.setItem('user', JSON.stringify(user))
 
                     socket.on('user typing', (typing) => {
                         store.commit('setTyping', typing)
@@ -66,10 +71,14 @@ const store = new Vuex.Store({
                         store.commit('addMessage', new Message(user, text, created))
                     })
                     
-                    socket.on('message update', ({messages}) => {
-                        store.commit('setMessages', users.map(m => {
-                            const user = store.state.connectedUsers.find(u => m.user.name === u.name)
-                            store.commit('addMessage', new Message(user, m.text, m.created))
+                    socket.on('messages update', ({messages}) => {
+
+                        store.commit('setMessages', messages.map(m => {
+                            let user = store.state.connectedUsers.find(u => m.user.name === u.name)
+                            if(!user) {
+                                user = new User(m.user.username, m.user.avatar)
+                            } 
+                            return new Message(user, m.text, m.created)
                         }))
                     })
                 })
@@ -94,7 +103,14 @@ const store = new Vuex.Store({
 })
 
 socket.on('command new', ({command, value}) => {
-    // nothing yet
+    switch (command) {
+        case 'humeur':
+                store.commit('setTheme', value)
+            break;
+    
+        default:
+            break;
+    }
 })
 
 export default store

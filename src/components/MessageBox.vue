@@ -62,6 +62,9 @@ export default {
                 &::placeholder {
                     color: rgba(255, 255, 255, 0.5)
                 }
+                &:focus {
+                    outline: none;
+                }
             }
 
             button[type=submit] {

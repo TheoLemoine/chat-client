@@ -38,6 +38,7 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    overflow-y: hidden;
 }
 
 #app {
@@ -64,9 +65,25 @@ body {
     border-image-outset: 0;
     border-image-repeat: stretch;
 
-    &.reverse {
-        border-image-source: url('assets/ball/B1/Triste.svg');
-    }
+    &.reverse {         border-image-source: url('assets/ball/B1/Triste.svg') }
+
+    &.love {            border-image-source: url('assets/ball/B2/Amour.svg') }
+    &.love.reverse {    border-image-source: url('assets/ball/B1/Amour.svg') }
+
+    &.angry {           border-image-source: url('assets/ball/B2/Colère.svg') }
+    &.angry.reverse {   border-image-source: url('assets/ball/B1/Colère.svg') }
+
+    &.happy {          border-image-source: url('assets/ball/B2/Joie.svg') }
+    &.happy.reverse {  border-image-source: url('assets/ball/B1/Joie.svg') }
+
+    &.afraid {          border-image-source: url('assets/ball/B2/Peur.svg') }
+    &.afraid.reverse {  border-image-source: url('assets/ball/B1/Peur.svg') }
+
+    &.serenity {        border-image-source: url('assets/ball/B2/Sérénité.svg') }
+    &.serenity.reverse {border-image-source: url('assets/ball/B1/Sérénité.svg') }
+
+    &.sad {             border-image-source: url('assets/ball/B2/Triste.svg') }
+    &.sad.reverse {     border-image-source: url('assets/ball/B1/Triste.svg') }
 }
 
 .slide-leave-active {

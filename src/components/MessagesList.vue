@@ -37,7 +37,7 @@ export default {
     }
 
     .up-fade-enter-active {
-        transition: all 0.2s ease-in-out;
+        transition: all 0.4s ease-out;
     }
 
     .up-fade-enter {
