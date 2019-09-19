@@ -1,7 +1,9 @@
 <template>
-    <div>
-        {{ user.name }}
-    </div>
+        <div class="container-name">
+            <p>{{ user.name }}</p>
+            <div class="name-line"></div>
+            <div class="dot-line"></div>
+        </div>
 </template>
 
 <script>
