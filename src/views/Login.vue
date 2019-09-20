@@ -1,11 +1,20 @@
 <template>
     <div class="login">
         <div class="login-circle">
-            <user-spinner 
-                :avatar="''" 
-                :size="150" 
-                :spinnerWidth="12"
-            ></user-spinner>
+            <div class="circle-img-around">
+                <img src="../assets/Contour_Poto.svg" alt="">
+            </div>
+            <div class="circle-global-container">
+                <div class="circle-container">
+                    <div class="circle-ext">
+                        <div class="circle-middle">
+                            <div class="circle-int">
+                                <div class="circle-background"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <h1>user name</h1>
         </div>
         <form @submit.prevent="handleUserConnect" class="form-login">
@@ -20,7 +29,7 @@
 
 <script>
 
-    import THREE from 'three.js';
+    import  *  as  THREE  from  "three";
 
     let scene, camera, renderer, starGeo, stars;
 
@@ -74,8 +83,8 @@
 
     init();
 
+
 import User from '../classes/User'
-import UserSpinner from '../components/UserSpinner'
 
 export default {
     data() {
@@ -96,9 +105,6 @@ export default {
                 .catch(console.error)
         },
     },
-    components: {
-        UserSpinner,
-    }
 }
 </script>
 
@@ -125,6 +131,118 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.circle-container{
+    border-radius: 100%;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    margin-bottom: 40px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+}
+
+.circle-global-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-ext{
+    width: 90%;
+    height: 90%;
+    border-radius: 200px;
+    border: 4px solid transparent;
+    border-right: 4px solid white;
+    border-bottom: 4px solid white;
+    -webkit-transform:rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: 6s linear infinite rotate;
+}
+
+.circle-middle{
+    width: 90%;
+    height: 90%;
+    border-radius: 200px;
+    border: 1px solid transparent;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    -webkit-transform:rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: 8s alternate infinite rotate;
+
+}
+
+.circle-int{
+    width: 90%;
+    height: 90%;
+    border-radius: 200px;
+    border: 2.5px solid transparent;
+    border-right: 2.5px solid white;
+    -webkit-transform:rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: 4s alternate infinite rotate;
+}
+
+.circle-img{
+    background-color: #00abe9;
+    width: 80px;
+    height: 80px;
+    border-radius: 200px;
+    opacity: 0.2;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.circle-img-around{
+    width: 210px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 43.95%;
+    top: 8%;
+
+}
+
+.circle-img-around img{
+    width: 100%;
+}
+
+.circle-background{
+    background-color: white;
+    width: 90%;
+    height: 90%;
+    border-radius: 200px;
+    opacity: 0.4;
+}
+
+
+.circle-img img{
+    width: auto;
+    height: 100%;
 }
 
 .login-circle{
