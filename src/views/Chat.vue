@@ -27,7 +27,7 @@ export default {
         left:0;
         width: 100%;
         height: 100%;
-        background: radial-gradient(circle, #091a2c00 0%, #091a2c 100%), 
+        background: radial-gradient(circle, #091a2c44 0%, #091a2c 100%), 
             url('../assets/BG.svg') repeat;
         background-size: 100%, 15%;
         
