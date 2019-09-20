@@ -4,7 +4,7 @@
             <img src="../assets/Contour_Poto.svg" alt="">
         </div>
         <div class="circle-img">
-            <img :src="user.avatarLink" alt="">
+            <img :src="avatar" alt="">
         </div>
         <div class="circle-container">
             <div class="circle-ext">
@@ -22,7 +22,7 @@ import User from '../classes/User';
 
 export default {
     props: {
-        user: User,
+        avatar: String,
         size: Number,
         spinnerWidth: Number,
     }

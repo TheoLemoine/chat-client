@@ -2,7 +2,7 @@
     <div class="slider-container">
         <div class="user-list-container" :class="{open: isOpen}">
 
-            <user-spinner :user="$store.state.currentUser" :size="150" :spinnerWidth="12"></user-spinner>
+            <user-spinner :avatar="$store.state.currentUser.avatarLink" :size="150" :spinnerWidth="12"></user-spinner>
 
             <div class="usernames-container">
                 <h2 class="username">{{$store.state.currentUser.name}}</h2><div class="open-slider" @click="isOpen = !isOpen" :class="{open: isOpen}"></div>

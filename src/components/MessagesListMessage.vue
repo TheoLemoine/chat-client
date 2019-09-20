@@ -1,7 +1,7 @@
 <template>
     <div class="message" :class="{ owned: isOwned }" ref="message">
         <user-spinner 
-            :user="message.user" 
+            :avatar="message.user.avatarLink" 
             :size="50" 
             :spinnerWidth="3" 
             class="avatar"
