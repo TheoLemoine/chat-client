@@ -49,7 +49,7 @@ const store = new Vuex.Store({
             return new Promise((resolve, reject) => {
                 socket.emit('user register', {
                     username: user.name,
-                    avatar: user.avatar,
+                    avatar: user.avatarLink,
                 })
                 socket.on('user registered', () => {
                     commit('setCurrentUser', user)
@@ -57,7 +57,7 @@ const store = new Vuex.Store({
 
                     localStorage.setItem('user', JSON.stringify(user))
 
-                    socket.on('user typing', (typing) => {
+                    socket.on('user typing', ({typing}) => {
                         store.commit('setTyping', typing)
                     })
                     
@@ -97,7 +97,7 @@ const store = new Vuex.Store({
             })
         },
         userStartTyping() {
-            io.emit('user typing')
+            socket.emit('user typing')
         }
     }
 })

@@ -1,24 +1,25 @@
 <template>
     <div class="message-box">
 
-        
-        <div class="loader">
-            <div class="evolu2"></div>
-            <div class="evolu"></div>
-            <div class="evolu3"></div>
-            <div class="evolu4"></div>
-            <div class="evolu2"></div>
-            <div class="evolu"></div>
-            <div class="evolu3"></div>
-            <div class="evolu4"></div>
-            <div class="evolu2"></div>
-            <div class="evolu"></div>
-            <div class="evolu3"></div>
-            <div class="evolu4"></div>
-        </div>
+        <transition v-if="$store.state.someoneTyping" name="fade-up">
+            <div class="loader">
+                <div class="evolu2"></div>
+                <div class="evolu"></div>
+                <div class="evolu3"></div>
+                <div class="evolu4"></div>
+                <div class="evolu2"></div>
+                <div class="evolu"></div>
+                <div class="evolu3"></div>
+                <div class="evolu4"></div>
+                <div class="evolu2"></div>
+                <div class="evolu"></div>
+                <div class="evolu3"></div>
+                <div class="evolu4"></div>
+            </div>
+        </transition>
 
         <form @submit.prevent="handleSubmit">
-            <input type="text" v-model="toSend" placeholder="Enter your text here...">
+            <input type="text" v-model="toSend" placeholder="Enter your text here..." @input="$store.dispatch('userStartTyping')">
             <button type="submit">Envoyer</button>
         </form>
     </div>
@@ -209,6 +210,13 @@ export default {
         100%{
             height: 10px;
         }
+    }
+
+    .fade-up-enter-active, .fade-up-leave-active {
+        transition: opacity .5s ease;
+    }
+    .fade-up-enter, .fade-up-leave-to  {
+        opacity: 0;
     }
 
 </style>
