@@ -1,7 +1,7 @@
 <template>
-    <transition-group 
-            name="up-fade" 
-            class="message-list" 
+    <transition-group
+            name="up-fade"
+            class="message-list"
             ref="chatBox">
         <messages-list-message
             v-for="(message, index) in messages"

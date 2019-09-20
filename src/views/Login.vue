@@ -10,75 +10,29 @@
             Picture
             <input type="url" v-model="avatarLink">
             <button type="submit">Connect</button>
+            <img src="../assets/star.png" alt="" style="display: none" ref="starImage">
         </form>
+        <canvas ref="canvas"></canvas>
     </div>
 </template>
 
 <script>
 
-    import  *  as  THREE  from  "three";
-
-    let scene, camera, renderer, starGeo, stars;
-
-    function init() {
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color( 0x091a2c );
-        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight,1, 1000);
-        camera.position.z = 1;
-        camera.position.x = Math.PI/2;
-        renderer= new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        starGeo = new THREE.Geometry();
-        for(let i=0;i<6000;i++) {
-            let star = new THREE.Vector3(
-                Math.random() * 600 - 300,
-                Math.random() * 600 - 300,
-                Math.random() * 600 - 300
-            );
-            star.velocity = 0;
-            star.acceleration = 0;
-            starGeo.vertices.push(star);
-        }
-        let sprite = new THREE.TextureLoader().load('img/star.png');
-        let starMaterial = new THREE.PointsMaterial({
-            color: 0xaaaaaa,
-            size: 0.7,
-            map: sprite
-        });
-
-        stars = new THREE.Points(starGeo,starMaterial);
-        scene.add(stars);
-        animate();
-    }
-
-    function animate() {
-        starGeo.vertices.forEach(p=> {
-            p.velocity += p.acceleration;
-            p.y -= p.velocity;
-            if(p.y < -200){
-                p.y = 200;
-                p.velocity = 0;
-            }
-        });
-        starGeo.verticesNeedUpdate = true;
-        stars.rotation.y += 0.0001;
-        renderer.render(scene,camera);
-        requestAnimationFrame(animate)
-    }
-
-    init();
-
-
 import User from '../classes/User'
 import UserSpinner from '../components/UserSpinner'
+import * as THREE from 'three'
 
 export default {
+    name: 'ThreeTest',
     data() {
         return {
             userName: '',
             avatarLink: '',
+            camera: null,
+            scene: null,
+            renderer: null,
+            mesh: null,
+            stars: null,
         }
     },
     created() {
@@ -87,14 +41,66 @@ export default {
         this.avatarLink = lastUser.avatarLink
     },
     methods: {
-        handleUserConnect(event) {
+        handleUserConnect() {
             this.$store.dispatch('connectUser', new User(this.userName, this.avatarLink))
                 .then(() => this.$router.push({name: 'chat'}))
                 .catch(console.error)
         },
+        init() {
+            this.scene = new THREE.Scene();
+            this.scene.background = new THREE.Color( 0x091a2c );
+            this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight,1, 1000);
+            this.camera.position.z = 1;
+            this.camera.position.x = Math.PI/2;
+
+            this.renderer= new THREE.WebGLRenderer({ canvas : this.$refs.canvas});
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(this.renderer.domElement);
+
+            this.starGeo = new THREE.Geometry();
+            for(let i=0;i<6000;i++) {
+                let star = new THREE.Vector3(
+                    Math.random() * 600 - 300,
+                    Math.random() * 600 - 300,
+                    Math.random() * 600 - 300
+                );
+                star.velocity = 0;
+                star.acceleration = 0;
+                this.starGeo.vertices.push(star);
+            }
+            let sprite = new THREE.TextureLoader().load(this.$refs.starImage.getAttribute('src'));
+            let starMaterial = new THREE.PointsMaterial({
+                color: 0xaaaaaa,
+                size: 0.7,
+                map: sprite
+            });
+
+            this.stars = new THREE.Points(this.starGeo,starMaterial);
+            this.scene.add(this.stars);
+            this.animate();
+        },
+        animate() {
+            this.starGeo.vertices.forEach(p => {
+                p.velocity += p.acceleration;
+                p.y -= p.velocity;
+                if(p.y < -200){
+                    p.y = 200;
+                    p.velocity = 0;
+                }
+            });
+            this.starGeo.verticesNeedUpdate = true;
+            this.stars.rotation.y += 0.0001;
+            this.renderer.render(this.scene,this.camera);
+            requestAnimationFrame(this.animate)
+        }
+    },
+    mounted() {
+
+        this.init();
+        this.animate();
     },
     components: {
-        UserSpinner,
+        UserSpinner
     }
 }
 </script>
@@ -107,7 +113,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 2;
-    background-color: #091a2c;
 }
 
 .form-login{
@@ -145,5 +150,13 @@ form {
     font-weight: 500;
     margin-top: 10px;
 }
+
+    canvas{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none;
+    }
 
 </style>
