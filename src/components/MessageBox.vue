@@ -46,6 +46,7 @@ export default {
     .message-box {
         width: 80%;
         height: 8%;
+        margin-right: 3%;
 
         form {
             display: flex;
@@ -62,7 +63,7 @@ export default {
             input[type=text] {
 
                 border: none;
-                width: 80%;
+                width: 75%;
                 height: 100%;
 
                 font-family: 'avenir';
@@ -122,7 +123,7 @@ export default {
         transform: rotate(180deg);
         max-height: 20px;
         bottom: 58px;
-        left: 230px;
+        left: 22%;
         position: absolute;
     }
 

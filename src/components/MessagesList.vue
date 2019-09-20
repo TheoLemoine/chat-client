@@ -29,11 +29,12 @@ export default {
 
 <style lang="scss" scoped>
     .message-list {
-        width: 80%;
+        width: 70%;
         height: 92%;
         display: flex;
         flex-direction: column;
         overflow-y: scroll;
+        margin-right: 5%;
     }
 
     .up-fade-enter-active {

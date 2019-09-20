@@ -29,14 +29,15 @@ export default {
         width: 100%;
         height: 100%;
         background: radial-gradient(circle, #091a2c44 0%, #091a2c 100%),
-            url('../assets/BG.svg') repeat;
-        background-size: 100%, 15%;
+            url('../assets/BG.svg') repeat,
+            url('../assets/left-sider.svg') no-repeat 5% 50%;
+        background-size: 100%, 15%, 10%;
 
         background-color: #064766;
 
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
     }
 </style>

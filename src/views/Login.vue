@@ -5,11 +5,10 @@
             <h1>user name</h1>
         </div>
         <form @submit.prevent="handleUserConnect" class="form-login">
-            Name
             <input type="text" v-model="userName">
-            Picture
             <input type="url" v-model="avatarLink">
             <button type="submit">Connect</button>
+
             <img src="../assets/star.png" alt="" style="display: none" ref="starImage">
         </form>
         <canvas ref="canvas"></canvas>
@@ -95,7 +94,6 @@ export default {
         }
     },
     mounted() {
-
         this.init();
         this.animate();
     },
@@ -105,7 +103,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
 .login {
     position: absolute;
     top:0;
@@ -113,10 +112,30 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 2;
+
+    .circle-img-around img {
+        left: 45%;
+    }
 }
 
 .form-login{
     margin-top: 60px;
+
+    .input[url], .input[text] {
+        background: url('../assets/Enter.svg');
+        background-size: contain; 
+    }
+
+    .input[text] {
+        
+    }
+
+    .input[url] {
+        
+    }
+    .button[submit] {
+        
+    }
 }
 
 form {
