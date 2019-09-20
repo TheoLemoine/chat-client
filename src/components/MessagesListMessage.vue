@@ -56,7 +56,7 @@ export default {
         text-transform: uppercase;
         letter-spacing: 0.35em;
         position: absolute;
-        left: 4.5%;
+        left: 5.3%;
         top: 15%;
     }
     .time {
@@ -66,7 +66,7 @@ export default {
         position: absolute;
         letter-spacing: 0.2em;
         bottom: 19%;
-        left: 8.5%;
+        left: 9.3%;
     }
     .content {
         
@@ -91,11 +91,11 @@ export default {
         }
         .username {
             left: unset;
-            right: 5%;
+            right: 4.7%;
         }
         .time {
             left: unset;
-            right: 9%;
+            right: 9.1%;
         }
         .avatar {
             display: none;
