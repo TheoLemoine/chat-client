@@ -1,6 +1,7 @@
 <template>
     <div class="message-box">
 
+        
         <div class="loader">
             <div class="evolu2"></div>
             <div class="evolu"></div>
