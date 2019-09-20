@@ -1,24 +1,6 @@
 <template>
     <div class="message-box">
 
-<<<<<<< HEAD
-        <transition v-if="$store.state.someoneTyping" name="fade-up">
-            <div class="loader">
-                <div class="evolu2"></div>
-                <div class="evolu"></div>
-                <div class="evolu3"></div>
-                <div class="evolu4"></div>
-                <div class="evolu2"></div>
-                <div class="evolu"></div>
-                <div class="evolu3"></div>
-                <div class="evolu4"></div>
-                <div class="evolu2"></div>
-                <div class="evolu"></div>
-                <div class="evolu3"></div>
-                <div class="evolu4"></div>
-            </div>
-        </transition>
-=======
 
         <div class="loader">
             <div class="evolu2"></div>
@@ -34,7 +16,6 @@
             <div class="evolu3"></div>
             <div class="evolu4"></div>
         </div>
->>>>>>> 211ba2abfd8ae04d56d0067637e8403b30e81901
 
         <form @submit.prevent="handleSubmit">
             <input type="text" v-model="toSend" placeholder="Enter your text here..." @input="$store.dispatch('userStartTyping')">
