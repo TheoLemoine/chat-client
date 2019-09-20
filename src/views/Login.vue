@@ -1,13 +1,33 @@
 <template>
     <div class="login">
         <div class="login-circle">
-            <user-spinner :avatar="''" :size="150" :spinnerWidth="12"></user-spinner>
-            <h1>user name</h1>
+            <user-spinner :avatar="avatarLink" :size="150" :spinnerWidth="12"></user-spinner>
+            <h1>user</h1>
         </div>
         <form @submit.prevent="handleUserConnect" class="form-login">
-            <input type="text" v-model="userName">
-            <input type="url" v-model="avatarLink">
-            <button type="submit">Connect</button>
+            <div class="sci-fi-input">
+                <input type="text" v-model="userName">  
+            </div>
+            <div class="sci-fi-input">
+                <input type="url" v-model="avatarLink"> 
+            </div>
+            <div class="submit-label">
+                Theme
+            </div>
+            <div class="submit-container">
+                <button type="submit" class="love" @click="$store.commit('setTheme', 'love')"></button>
+                
+                <button type="submit" class="angry" @click="$store.commit('setTheme', 'angry')"></button>
+                
+                <button type="submit" class="happy" @click="$store.commit('setTheme', 'happy')"></button>
+                
+                <button type="submit" class="afraid" @click="$store.commit('setTheme', 'afraid')"></button>
+                
+                <button type="submit" class="serenity" @click="$store.commit('setTheme', 'serenity')"></button>
+                
+                <button type="submit" class="sad" @click="$store.commit('setTheme', 'sad')"></button>
+            </div>
+            
 
             <img src="../assets/star.png" alt="" style="display: none" ref="starImage">
         </form>
@@ -118,30 +138,75 @@ export default {
     }
 }
 
+.submit-label {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    color: white;
+    letter-spacing: .395rem;
+    font-family: korolev, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 2rem;
+}
+
+.submit-container {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    button {
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        background-repeat: no-repeat;
+        cursor: pointer;
+
+        &:focus{
+            outline: none;
+        }
+    }
+    .love { background-image: url('../assets/ball/lit/Amour.svg') }
+    .angry { background-image: url('../assets/ball/lit/Colère.svg') }
+    .happy { background-image: url('../assets/ball/lit/Joie.svg') }
+    .afraid { background-image: url('../assets/ball/lit/Peur.svg') }
+    .serenity { background-image: url('../assets/ball/lit/Sérénité.svg') }
+    .sad { background-image: url('../assets/ball/lit/Triste.svg') }
+}
+
 .form-login{
-    margin-top: 60px;
-
-    .input[url], .input[text] {
+    .sci-fi-input {
         background: url('../assets/Enter.svg');
-        background-size: contain; 
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 4.5rem;
+        width: 16rem;
+        margin-top: 2rem;
+        padding-bottom: 1rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .input[text] {
-        
+    input[type=url], input[type=text] {
+        font-family: 'avenir';
+        font-size: 1.3rem;
+        color: white;
+        text-align: center;
+        background-color: transparent;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
     }
 
-    .input[url] {
-        
-    }
-    .button[submit] {
-        
-    }
 }
 
 form {
-    width: 100%;
-    height: 100%;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -150,9 +215,8 @@ form {
 
 .login-circle{
     width: 100%;
-    height: 300px;
+    height: 30vh;
     margin-top: 80px;
-    position: absolute;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -170,12 +234,12 @@ form {
     margin-top: 10px;
 }
 
-    canvas{
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        pointer-events: none;
-    }
+canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
 
 </style>
