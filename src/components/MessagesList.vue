@@ -1,7 +1,7 @@
 <template>
     <transition-group name="up-fade" class="message-list">
         <messages-list-message
-            v-for="(message, index) in messages" 
+            v-for="(message, index) in messages"
             :key="index"
             :message="message"
         ></messages-list-message>
@@ -46,4 +46,5 @@ export default {
         transform: translateY(0);
         opacity: 1;
     }
+
 </style>

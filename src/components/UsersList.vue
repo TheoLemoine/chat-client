@@ -40,8 +40,11 @@
 
 
 
-    </div>
 
+    </div>
+        <div class="img-coder">
+            <img src="../assets/Coder_Gauche.svg" alt="">
+        </div>
 
 
     </div>
@@ -84,7 +87,7 @@ export default {
         align-items: center;
         flex-direction: column;
         justify-content: center;
-        box-shadow:  3px 3px 15px 15px rgba(0,0,0,0.4);
+        box-shadow:  3px 3px 15px 15px rgba(9,26,44,0.9);
 
         transition: left cubic-bezier(0.24, 1.06, 0.51, 0.98) 0.5s;
 
@@ -95,7 +98,7 @@ export default {
     }
 
     .open-slider.slide{
-        transform: rotateZ(40deg);
+        transform: rotateZ(45deg);
     }
 
     img{
@@ -193,8 +196,12 @@ export default {
         justify-content: center;
         align-items: center;
         position: absolute;
-        left: 50px;
+        left: 55px;
         top: 15px;
+    }
+
+    .circle-img-around img{
+        width: 100%;
     }
 
 
@@ -244,9 +251,19 @@ export default {
         border-top: 1.5px solid white;
         z-index: 998;
         transition: transform .5s ease;
-        transform: rotateZ(220deg);
+        transform: rotateZ(225deg);
     }
 
+    .img-coder{
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 190px;
+        left: 70px;
+    }
 
+    .img-coder img{
+        width: 40%;
+    }
 
 </style>
