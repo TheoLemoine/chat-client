@@ -11,7 +11,7 @@
     "core-js": "^2.6.5",
     "moment": "^2.24.0",
     "socket.io-client": "^2.2.0",
-    "three": "^0.108.0",
+    "three": "^0.125.0",
     "three.js": "^0.77.1",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3",
